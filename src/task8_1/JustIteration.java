@@ -42,7 +42,7 @@ public class JustIteration {
         double eps = Double.MAX_VALUE;
         int iteration = 0;
 
-        while (eps > tolerance && iteration < maxIterations) {
+        while (eps > ((1 - FrobeniusMatrixNorm(B)) / (FrobeniusMatrixNorm(B))) * tolerance && iteration < maxIterations) {
             System.arraycopy(x,0,x_new,0,n);
             for (int i = 0; i < n; i++) {
                 x_new[i] = c[i];
@@ -78,24 +78,24 @@ public class JustIteration {
         Matrix A = generationDataMatrix(n, bound);
         double[] b = generationDataArray(n, bound);
         getBC(A, b);
-        while (firstMatrixNorm(B) > 1) {
+        while (FrobeniusMatrixNorm(B) > 1) {
             A = generationDataMatrix(n, bound);
-            A = sumMatrix(A, multiplicationMatrixDouble(100, identityMatrix(n)),    true);
+            A = sumMatrix(A, multiplicationMatrixDouble(400, identityMatrix(n)), true);
             b = generationDataArray(n, bound);
             getBC(A, b);
         }
         return new PairMatrixVector(A, b);
     }
 
-    static class PairMatrixVector {
+    public static class PairMatrixVector {
 
         public PairMatrixVector(Matrix a, double[] b) {
             A = a;
             this.b = b;
         }
 
-        Matrix A;
-        double[] b;
+        public Matrix A;
+        public double[] b;
 
         public Matrix getA() {
             return A;
