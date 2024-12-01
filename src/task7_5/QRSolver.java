@@ -70,6 +70,7 @@ public class QRSolver {
             Matrix V = sumMatrix(identityMatrix(A.width - j),
                     multiplicationMatrixDouble(2,multiplicationVecVec(w, w)), false);
             Matrix P = new Matrix(new double[A.width][A.height]);
+
             for (int i_1 = 0; i_1 < P.height; i_1++) {
                 for (int j_1 = 0; j_1 < P.width; j_1++) {
                     if (i_1 < j || j_1 < j) {
@@ -79,11 +80,10 @@ public class QRSolver {
                     }
                 }
             }
-            P_i = multiplicationMatrix(P, P_i);
+            P_i = multiplicationMatrix(P_i, P); // вот здесь была проблема
             A_new = multiplicationMatrix(P, A_new);
 
 
-            System.out.println("Iteration: " + j + " А: \n" + A_new);
 
         }
         R = A_new;
