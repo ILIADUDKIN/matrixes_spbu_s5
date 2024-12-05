@@ -74,9 +74,10 @@ public class GaussSolver {
 
     public static Matrix gilbertMatrix(int n) {
         double[][] comp = new double[n][n];
+        double epsilon = 10e-6;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                comp[i][j] = (double) 1 / ((i + 1) + (j + 1) - 1);
+                comp[i][j] = (i == j) ? (double) 1 / ((i + 1) + (j + 1) - 1) + epsilon : (double) 1 / ((i + 1) + (j + 1) - 1) ;
             }
         }
         return new Matrix(comp);

@@ -2,7 +2,7 @@ package task8_2;
 
 import org.junit.Test;
 import task7_0.Matrix;
-import task8_1.JustIteration;
+import task8_1.JacobiMethod;
 
 import java.util.Arrays;
 
@@ -14,7 +14,7 @@ public class TEST_GAUSS_SEIDEL {
     @Test
     public void testGSM() throws Exception {
         int n = 5;
-        JustIteration.PairMatrixVector pairMatrixVector = generateDataSeidel(n, 100);
+        JacobiMethod.PairMatrixVector pairMatrixVector = generateDataSeidel(n, 100);
         Matrix A = pairMatrixVector.A;
         double[] b = pairMatrixVector.b;
         System.out.println("----------------------");

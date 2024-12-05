@@ -7,7 +7,7 @@ import static task7_0.DataGeneration.generationDataArray;
 import static task7_0.DataGeneration.generationDataMatrix;
 import static task7_0.StandartMatrixOperations.*;
 
-public class JustIteration {
+public class JacobiMethod {
 
     public static Matrix B;
     public static double[] c;
@@ -35,7 +35,7 @@ public class JustIteration {
         B = new Matrix(b_comp);
     }
 
-    public static double[] justIteration(Matrix B, double[] c, double tolerance, int maxIterations) {
+    public static double[] jacobiMethod (Matrix B, double[] c, double tolerance, int maxIterations) {
         int n = B.width;
         double[] x = new double[n];
         double[] x_new = new double[n];

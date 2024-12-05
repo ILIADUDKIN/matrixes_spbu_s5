@@ -72,7 +72,6 @@ public class TEST_GAUSS_SOLVER {
                     "проблемы");
         }
 
-
     }
 
 }

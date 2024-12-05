@@ -1,12 +1,12 @@
 package task8_2;
 
 import task7_0.Matrix;
-import task8_1.JustIteration;
+import task8_1.JacobiMethod;
 
 import static task7_0.DataGeneration.generationDataArray;
 import static task7_0.DataGeneration.generationDataMatrix;
 import static task7_0.StandartMatrixOperations.*;
-import static task8_1.JustIteration.subtractVectors;
+import static task8_1.JacobiMethod.subtractVectors;
 
 public class GaussSeidelMethod {
     public static Matrix B;
@@ -38,7 +38,7 @@ public class GaussSeidelMethod {
         getB1B2(B.width);
     }
 
-    public static JustIteration.PairMatrixVector generateDataSeidel(int n, double bound) {
+    public static JacobiMethod.PairMatrixVector generateDataSeidel(int n, double bound) {
         Matrix A = generationDataMatrix(n, bound);
         double[] b = generationDataArray(n, bound);
         getBC(A, b);
@@ -48,7 +48,7 @@ public class GaussSeidelMethod {
             b = generationDataArray(n, bound);
             getBC(A, b);
         }
-        return new JustIteration.PairMatrixVector(A, b);
+        return new JacobiMethod.PairMatrixVector(A, b);
     }
     public static double[] gaussSeidel(Matrix B, double[] c, double tolerance, int maxIterations) {
         int n = B.width;

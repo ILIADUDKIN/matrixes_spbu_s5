@@ -230,6 +230,21 @@ public class StandartMatrixOperations {
         return a;
     }
 
+    public static double[] multiplicationVectorDouble(double C, double[] vec) {
+        double[] vec_2 = new double[vec.length];
+        for (int i = 0; i < vec.length; i++) {
+            vec_2[i] = vec[i] * C;
+        }
+        return vec_2;
+    }
+
+    public static double scalarMultiplication(double[] vec1, double[] vec2) {
+        double sum = 0;
+        for (int i = 0; i < vec1.length; i++) {
+            sum += vec1[i] * vec2[i];
+        }
+        return sum;
+    }
     public static double normVector(double[] v) {
         double norm_v = 0;
         for (double value : v) {

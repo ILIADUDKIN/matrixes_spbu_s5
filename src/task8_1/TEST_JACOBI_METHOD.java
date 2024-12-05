@@ -6,9 +6,9 @@ import task7_0.Matrix;
 import java.util.Arrays;
 
 import static task7_0.StandartMatrixOperations.*;
-import static task8_1.JustIteration.*;
+import static task8_1.JacobiMethod.*;
 
-public class TEST_JUST_ITERA {
+public class TEST_JACOBI_METHOD {
 
     @Test
     public void testJI() throws Exception {
@@ -24,7 +24,7 @@ public class TEST_JUST_ITERA {
         System.out.println("----------------------");
         System.out.println("Норма матрицы B: " + firstMatrixNorm(B));
         System.out.println("Вектор с имеет вид: " + Arrays.toString(c));
-        double[] x = justIteration(B, c, 0.00001, 100000000);
+        double[] x = jacobiMethod(B, c, 0.00001, 100000000);
         System.out.println("Ответ: \n" + Arrays.toString(x));
         System.out.println();
         System.out.println("Bx + C = " + Arrays.toString(sumVector(multiplicationMatrixVector(B, x) , c, true) ));
@@ -42,7 +42,7 @@ public class TEST_JUST_ITERA {
         System.out.println("B: " + B);
         System.out.println("Norm of B: " + FrobeniusMatrixNorm(B));
         System.out.println("c: " + Arrays.toString(c));
-        double[] x = justIteration(B, c, 0.00000001, 1000000000);
+        double[] x = jacobiMethod(B, c, 0.00000001, 1000000000);
         System.out.println("Ответ: \n" + Arrays.toString(x));
         System.out.println();
         System.out.println("Bx + C = " + Arrays.toString(sumVector(multiplicationMatrixVector(B, x) , c, true) ));
