@@ -60,7 +60,7 @@ public class TEST_QR_SOLVER {
             A_2copy.components[i] = Arrays.copyOf(A.components[i], A.components[i].length);
         }
 
-        QRSolver.houseHolderMethod(A,b);
+        QRSolver.houseHolderMethod(A);
         System.out.println("Матрица А имеет вид:\n" + A_copy);
         System.out.println();
         System.out.println("________________________________");
@@ -77,6 +77,12 @@ public class TEST_QR_SOLVER {
         System.out.println("________________________________");
         System.out.println();
         System.out.println("Разница между нормами матриц: \n" + abs(FrobeniusMatrixNorm(sumMatrix(qr,A_copy,false))));
+
+    }
+
+    @Test
+    public void test_HessenbergMatrix() throws Exception {
+        int n = 5;
 
     }
 }

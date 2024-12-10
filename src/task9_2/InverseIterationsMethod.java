@@ -40,8 +40,6 @@ public class InverseIterationsMethod {
                 return x;
             }
 
-
-
         }
         System.out.println("Метод не сошелся за заданное число итераций.");
         return null;

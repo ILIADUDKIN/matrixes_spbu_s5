@@ -106,6 +106,18 @@ public class DataGeneration {
         return StandartMatrixOperations.multiplicationMatrix(m_inverse, Am);
     }
 
+    public static Matrix[] generationMatrixWithRealEigenValuesAndP(int n, double bound) {
+        Matrix P;
+        do {
+            P = generationDataMatrix(n, bound);
+        } while (Determinant.detGauss(P) == 0);
+        Matrix A = generationDiagonalMatrix(n, bound);
+        System.out.println("Матрица диагональная имеет вид: \n" + A);
+        Matrix Am = StandartMatrixOperations.multiplicationMatrix(A, P);
+        Matrix m_inverse  = StandartMatrixOperations.inverseMatrix(P);
+        return new Matrix[] {StandartMatrixOperations.multiplicationMatrix(m_inverse, Am), P};
+    }
+
     public static Matrix generationSymmetryMatrix(int n, double bound) {
         double[][] m_comp = new double[n][n];
         Random random = new Random();

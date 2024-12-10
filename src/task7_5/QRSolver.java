@@ -12,10 +12,8 @@ public class QRSolver {
     public static Matrix Q;
     public static Matrix R;
 
-
     public static void givensMethod(Matrix A, double[] b) {
         Matrix A_new = getMatrix(A);
-
         double[] b_new = Arrays.copyOf(b, b.length);
         Matrix T = identityMatrix(A.height);
         Matrix[][] T_ij = new Matrix[A_new.height][A_new.width];
@@ -46,7 +44,7 @@ public class QRSolver {
     }
 
 
-    public static void houseHolderMethod(Matrix A, double[] b) {
+    public static void houseHolderMethod(Matrix A) {
         Matrix A_new = getMatrix(A);
         Matrix P_i = identityMatrix(A.height);
         for (int j = 0; j < A_new.width; j++) {
@@ -60,7 +58,6 @@ public class QRSolver {
             for (int k = 0; k < v.length; k++) {
                 v[k] = a[k] + normVector(a) * (k == 0 ? 1 : 0) * Math.signum(a[0]);
             }
-
 
             double norm_v = normVector(v);
             double[] w = new double[A.width - j];
@@ -80,14 +77,14 @@ public class QRSolver {
                     }
                 }
             }
+
             P_i = multiplicationMatrix(P_i, P); // вот здесь была проблема
             A_new = multiplicationMatrix(P, A_new);
-
-
 
         }
         R = A_new;
         Q = P_i;
+
 
     }
 
