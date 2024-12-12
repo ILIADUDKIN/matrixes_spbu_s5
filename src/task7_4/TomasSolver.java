@@ -109,6 +109,10 @@ public class TomasSolver {
         return x;
     }
 
+
+
+
+
     public static boolean isDiagonalPredominance(Matrix A) {
         int n = A.components.length;
         if (!isThreeDiagonal(A)) {
