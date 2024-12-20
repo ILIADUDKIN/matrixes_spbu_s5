@@ -90,11 +90,8 @@ public class ODESolver {
             }
         }
         double[] rightSide = Arrays.copyOf(G, n + 1);
-        System.out.println("Matrix: \n" + matrix);
         double[] y = solveTomas(matrix, A, B, C, rightSide);
-        for (int i = 0; i < n+1; i++) {
-            System.out.println("i: " + i + ", x: " + x_i[i] + ", y: " + y[i]);
-        }
+        System.out.println("Решение: " + Arrays.toString(y));
         return y;
     }
 
@@ -159,7 +156,7 @@ public class ODESolver {
             for (int j = 0; j < n + 2; j++) {
                 if (Math.abs(i - j) <= 1) {
                     if (i == j) {
-                        matrix.components[i][j] = B[i];
+                        matrix.components[i][j] = B[i] ;
                     }
                     if (j == i + 1) {
                         matrix.components[i][j] = C[i];
@@ -174,11 +171,9 @@ public class ODESolver {
             }
         }
         double[] rightSide = Arrays.copyOf(G, n + 2);
-        System.out.println("Matrix: \n" + matrix);
+        /*System.out.println("Matrix: \n" + matrix);*/
         double[] y = solveTomas(matrix, A, B, C, rightSide);
-        for (int i = 0; i < n+2; i++) {
-            System.out.println("i: " + i + ", x: " + x_i[i] + ", y: " + y[i]);
-        }
+        System.out.println("Решение: " + Arrays.toString(y));
         return y;
     }
 
@@ -194,6 +189,7 @@ public class ODESolver {
     }
 
     public static void main(String[] args) throws Exception {
+        // TODO проверить еще раз логику решения и правильность аргумента в матлабе
         System.out.println("Решение на основной сетке: ");
         solveOdeH();
         System.out.println("Решение на вторичной сетке: ");
