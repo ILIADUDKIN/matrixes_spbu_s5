@@ -18,10 +18,11 @@ public class StandartMatrixOperations {
     }
 
     public static double[] sumVector(double[] a, double[] b, boolean sign) {
+        double[] result = new double[b.length];
         for (int i = 0; i < a.length; i++) {
-            a[i] = (sign) ? a[i] + b[i] : a[i] - b[i];
+            result[i] = (sign) ? a[i] + b[i] : a[i] - b[i];
         }
-        return a;
+        return result;
     }
 
     public static Matrix sumMatrix(Matrix a, Matrix b, boolean operation) {
