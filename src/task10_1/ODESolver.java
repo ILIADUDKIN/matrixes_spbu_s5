@@ -2,9 +2,11 @@ package task10_1;
 
 import task7_0.Matrix;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import static task7_1.GaussSolver.solveGauss;
 import static task7_4.TomasSolver.solveTomas;
 
 /**
@@ -90,8 +92,19 @@ public class ODESolver {
             }
         }
         double[] rightSide = Arrays.copyOf(G, n + 1);
-        double[] y = solveTomas(matrix, A, B, C, rightSide);
-        System.out.println("Решение: " + Arrays.toString(y));
+        double[] y = solveTomas(matrix, A, B, C, rightSide); // работает верно
+
+        System.out.println("h: " + h);
+        for (int i = 0; i < n + 1; i++) {
+            System.out.printf("%.4f", x_i[i]);
+            System.out.print("| ");
+        }
+        System.out.println();
+        for (int i = 0; i < n + 1; i++) {
+            System.out.printf("%.4f", y[i]);
+            System.out.print(" | ");
+        }
+        System.out.println();
         return y;
     }
 
@@ -171,9 +184,18 @@ public class ODESolver {
             }
         }
         double[] rightSide = Arrays.copyOf(G, n + 2);
-        /*System.out.println("Matrix: \n" + matrix);*/
-        double[] y = solveTomas(matrix, A, B, C, rightSide);
-        System.out.println("Решение: " + Arrays.toString(y));
+        double[] y = solveGauss(matrix, rightSide);
+        System.out.println("h: " + h);
+        for (int i = 0; i < n + 2; i++) {
+            System.out.printf("%.4f", x_i[i]);
+            System.out.print("| ");
+        }
+        System.out.println();
+        for (int i = 0; i < n + 2; i++) {
+            System.out.printf("%.4f", y[i]);
+            System.out.print(" | ");
+        }
+        System.out.println();
         return y;
     }
 
@@ -189,7 +211,6 @@ public class ODESolver {
     }
 
     public static void main(String[] args) throws Exception {
-        // TODO проверить еще раз логику решения и правильность аргумента в матлабе
         System.out.println("Решение на основной сетке: ");
         solveOdeH();
         System.out.println("Решение на вторичной сетке: ");

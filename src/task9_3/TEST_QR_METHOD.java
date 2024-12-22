@@ -64,11 +64,5 @@ public class TEST_QR_METHOD {
         double maxEigenValue = Arrays.stream(eigenValues).max().getAsDouble();
         System.out.println("maxEigenValue: " + maxEigenValue);
 
-
-
-
-
-
-
     }
 }

@@ -4,8 +4,7 @@ import task7_0.Matrix;
 
 import java.util.Arrays;
 
-import static java.lang.Math.PI;
-import static java.lang.Math.sin;
+import static java.lang.Math.*;
 import static task10_1.ODESolver.inputN;
 import static task7_0.StandartMatrixOperations.normVector;
 import static task7_0.StandartMatrixOperations.sumVector;
@@ -21,34 +20,38 @@ public class IntegralEquationSolver {
         lambda = -3;
      */
     public static double[] solveIntegralEquation() throws Exception {
-        int n = inputN();
-          double[] u; // решения системы
-          double[] x; // вектор-сетка
-
+        double[] u = null;
+        double[] trueSolution = null;// решения системы
+        double[] x; // вектор-сетка
+        double epsilon = 10e-1;
         double a = 0;
         double b = PI/2;
-        double h = (b - a) / n;
-        double lambda = -3;
-        u = new double[n+1];
-        x = new double[n+1];
-        for (int i = 0; i < n+1; i++) {
-            x[i] = a + h * i;
-        }
 
 
-        // реальное решение
-        double[] trueSolution = new double[n+1];
-        for (int i = 0; i < n+1; i++) {
-            trueSolution[i] = 2 - 3 * sin(x[i]);
-        }
-
-        boolean stopFlag = true;
+        double epsCurrent = 100;
         int iteration = 1;
-        while (stopFlag) {
+        while (abs(epsCurrent) > epsilon) {
+            int n = (int) pow(2, iteration);
+            iteration += 1;
+            double h = (b - a) / n;
+            double lambda = -3;
+            u = new double[n+1];
+            x = new double[n+1];
+            for (int i = 0; i < n+1; i++) {
+                x[i] = a + h * i;
+            }
+
+            // реальное решение
+            trueSolution = new double[n+1];
+            for (int i = 0; i < n+1; i++) {
+                trueSolution[i] = 2 - 3 * sin(x[i]);
+            }
+
+
             Matrix A = new Matrix(new double[n + 1][n + 1]);
             for (int i = 0; i < n + 1; i++) {
                 for (int j = 0; j < n + 1; j++) {
-                    A.components[i][j] = (i == j ? 1 : 0) - lambda * simpsonCoefficient(j, n, h * iteration) * k(x[i], x[j]);
+                    A.components[i][j] = (i == j ? 1 : 0) - lambda * simpsonCoefficient(j, n, h) * k(x[i], x[j]);
                 }
             }
 
@@ -57,13 +60,8 @@ public class IntegralEquationSolver {
                 rs[i] = 2;
             }
             u = solveGauss(A, rs);
-            if (normVector(sumVector(trueSolution,u,false)) <= 10e-4) {
-                stopFlag = false;
-            }
-            else {
-                iteration*=2;
-            }
-
+            System.out.println("Решение u выглядит так: " + Arrays.toString(u));
+            epsCurrent = normVector(sumVector(u,trueSolution,false));
         }
 
         System.out.println("Real solution: " + Arrays.toString(trueSolution));
