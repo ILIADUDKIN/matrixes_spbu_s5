@@ -6,6 +6,8 @@ import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import static task7_0.StandartMatrixOperations.normVector;
+import static task7_0.StandartMatrixOperations.sumVector;
 import static task7_1.GaussSolver.solveGauss;
 import static task7_4.TomasSolver.solveTomas;
 
@@ -15,6 +17,7 @@ import static task7_4.TomasSolver.solveTomas;
  */
 public class ODESolver {
 
+    //public double[] truSol = new double[]{0.8133,	0.8146,	0.8180,	0.8226,	0.8276,	0.8323,	0.8361,	0.8386,	0.8392,	0.8375,	0.8328,	0.8248,	0.8128,	0.7961,	0.7740,	0.7456,	0.7097,	0.6650,	0.6098,	0.5419,	0.4589};
     public static double[] solveOdeH() throws Exception {
         // задание начальных параметров
         int a = -1;

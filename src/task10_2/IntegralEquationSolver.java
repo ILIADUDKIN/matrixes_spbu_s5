@@ -23,7 +23,7 @@ public class IntegralEquationSolver {
         double[] u = null;
         double[] trueSolution = null;// решения системы
         double[] x; // вектор-сетка
-        double epsilon = 10e-1;
+        double epsilon = 10e-8;
         double a = 0;
         double b = PI/2;
 
@@ -66,6 +66,7 @@ public class IntegralEquationSolver {
 
         System.out.println("Real solution: " + Arrays.toString(trueSolution));
         System.out.println("Computed solution: " + Arrays.toString(u));
+        System.out.println("Величина ошибки:" + normVector(sumVector(u, trueSolution, false)));
         return u;
     }
 
