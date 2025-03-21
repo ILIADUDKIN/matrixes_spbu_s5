@@ -144,7 +144,7 @@ public class ODESolver {
         double[] G = new double[n + 2];
 
         for (int i = 1; i < n + 1; i++) {
-            A[i] = (-p_i[i]) / (h * h) - (q_i[i]) / (2 * h);
+               A[i] = (-p_i[i]) / (h * h) - (q_i[i]) / (2 * h);
             B[i] = (2 * p_i[i]) / (h * h) + r_i[i];
             C[i] = (-p_i[i]) / (h * h) + (q_i[i]) / (2 * h);
             G[i] = f_i[i];
