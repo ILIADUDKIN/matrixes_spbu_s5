@@ -149,7 +149,7 @@ public class ODESolver {
             C[i] = (-p_i[i]) / (h * h) + (q_i[i]) / (2 * h);
             G[i] = f_i[i];
         }
-        double k = 0L;
+        double k = 0;
         double alpha_1 = 0;
         double alpha_2 = -1;
         double beta_1 = 2;
