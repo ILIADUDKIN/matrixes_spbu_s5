@@ -151,7 +151,7 @@ public class ODESolver {
         }
         double k = 0L;
         double alpha_1 = 0;
-        double alpha_2 = -1;
+        double alpha_2 = -1.0;
         double beta_1 = 2;
         double beta_2 = 1;
         double alpha = 0;
