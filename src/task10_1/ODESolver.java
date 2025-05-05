@@ -155,7 +155,7 @@ public class ODESolver {
         double beta_1 = 2;
         double beta_2 = 1;
         double alpha = 0;
-        double beta = 0;
+        double beta = 0L;
         A[0] = 0;
         B[0] = alpha_1 / 2 + alpha_2 / h   ;
         C[0] = alpha_1 / 2 - alpha_2 / h;
