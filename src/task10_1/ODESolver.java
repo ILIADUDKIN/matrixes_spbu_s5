@@ -153,7 +153,7 @@ public class ODESolver {
         double alpha_1 = 0L;
         double alpha_2 = -1.0;
         double beta_1 = 2L;
-        double beta_2 = 1L;
+        double beta_2 = 1;
         double alpha = 0;
         double beta = 0L;
         A[0] = 0;
