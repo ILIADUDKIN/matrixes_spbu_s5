@@ -150,7 +150,7 @@ public class ODESolver {
             G[i] = f_i[i];
         }
         double k = 0L;
-        double alpha_1 = 0L;
+        double alpha_1 = 0;
         double alpha_2 = -1.0;
         double beta_1 = 2L;
         double beta_2 = 1;
